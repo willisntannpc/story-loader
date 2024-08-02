@@ -1,0 +1,167 @@
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+
+}
+
+.circle{
+    position:absolute;
+    width:100px;
+    height:100px;
+
+svg{
+    fill:none;
+    stroke:#8a3ab9;
+    stroke-linecap: round;
+    stroke-width:3;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: stroke-draw 6s ease-out infinite alternate; 
+    animation: stroke-draw 6s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate; 
+
+}
+
+img{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    width:70px;
+    border-radius:50%;
+}
+
+}
+@keyframes stroke-draw {
+    from{
+      stroke:#8a3ab9;
+      stroke-dasharray: 1;
+    }
+    to{
+      stroke:#cd486b;
+      transform:rotate(180deg);
+      stroke-dasharray: 8;
+    }
+}
+
+.wrapper{
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+:root{
+    --index: calc(1vw + 1vh);
+    --transition: cubic-bezier(.1, .7, 0, 1);
+}
+
+body{
+    background-color: #141414;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.items{
+    display: flex;
+    gap: 0.4rem;
+    perspective: calc(var(--index) * 35);
+}
+
+.item{
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale(1) brightness(.7
+    );
+    transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+    will-change: transform, filter, rotateY, width;
+}
+
+.item::before, .item::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    right: calc(var(--index) * -1);
+}
+
+.item::after{
+    left: calc(var(--index) * -1);
+}
+
+.items .item:hover{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+                /* left --> right */
+
+.items .item:hover + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+    z-index: -1;
+}
+
+.items .item:hover + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+    z-index: -2;
+}
+
+.items .item:hover + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(30deg);
+    z-index: -3;
+}
+
+.items .item:hover + * + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(15deg);
+    z-index: -4;
+}
+
+
+                /* right --> left */
+ 
+.items .item:has( + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+} */
+
+.items .item:has( + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+}
+
+.items .item:has( + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(-30deg);
+}
+
+.items .item:has( + * + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(-15deg);
+}
+
+.items .item:active, .items .item:focus {
+	width: 28vw;
+	filter: inherit;
+	z-index: 100;
+	transform: translateZ(calc(var(--index) * 10));
+    margin: 0 .45vw; 
+}
+
+.items > div {
+    height: 220px;
+    width: 100px;
+}
+  
